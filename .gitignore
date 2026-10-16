@@ -1,0 +1,22 @@
+# Bỏ qua thư mục cache của Python (đang hiển thị trong hình của bạn)
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Bỏ qua thư mục môi trường ảo ảo (nếu bạn có dùng)
+venv/
+env/
+.env
+
+# Bỏ qua các file báo cáo coverage tự sinh ra (trừ file log yêu cầu nộp)
+.coverage
+coverage_html/
+htmlcov/
+.pytest_cache/
+
+# Mặc định thường bỏ qua file *.log
+# NHƯNG bài này yêu cầu nộp log làm minh chứng nên KHÔNG được chặn đuôi *.log
+# Nếu bạn lỡ cài các plugin gitignore tự động có dòng *.log thì phải xóa đi hoặc thêm dấu ! đằng trước để loại trừ.
+!logs/local_test.log
+!logs/git_history.log
+!logs/github_actions_run.log

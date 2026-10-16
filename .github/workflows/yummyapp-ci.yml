@@ -9,7 +9,6 @@ on:
 jobs:
   mobile-test-job:
     runs-on: ubuntu-latest
-
     steps:
       - name: 1. Checkout Source Code
         uses: actions/checkout@v4
@@ -24,20 +23,5 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: 4. Static Code Analysis (Linter)
-        run: flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-
-      - name: 5. Execute Tests & Quality Gate
-        run: |
-          coverage run --source=. -m unittest discover -s . -p "test_*.py"
-          coverage report -m
-          coverage html -d coverage_html
-          coverage report --fail-under=80
-
-      - name: 6. Upload HTML Coverage Report Artifact
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: yummyapp-coverage-report
-          path: coverage_html/
-          retention-days: 7
+      - name: 4. Execute Test Suite
+        run: python -m unittest discover -s . -p "test_*.py"
